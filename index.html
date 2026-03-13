@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Redirigiendo a CalendGüi</title>
+    <script>
+      // Link de la última versión (hardcodeado por ahora)
+      const latestLink = "https://script.google.com/macros/s/AKfycbzpCR8S9wT_6E6Utg7Au5PQzA1sKrHpBc0yRLcr5apkHP2j1A7Ynt14pPEo83J-jM4o/exec"; 
+
+      // Construir el link final con ?vista=participante
+      const finalLink = latestLink + "?vista=participante";
+
+      // Redirigir automáticamente al cargar la página
+      window.location.href = finalLink;
+    </script>
+  </head>
+  <body>
+    <p>Redirigiendo a CalendGüi... Si no funciona, haz <a id="fallback" href="#">click aquí</a>.</p>
+    <script>
+      // Actualizar link de fallback
+      document.getElementById('fallback').href = latestLink + "?vista=participante";
+    </script>
+  </body>
+</html>
