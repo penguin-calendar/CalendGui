@@ -1,2 +1,2 @@
 # CalendGui
-## [link](https://penguin-calendar.github.io/CalendG-i/)
+## Link: https://penguin-calendar.github.io/CalendG-i/
