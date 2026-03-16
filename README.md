@@ -1,2 +1,2 @@
 # CalendGui
-## Link: https://penguin-calendar.github.io/CalendG-i/
+## Link: penguin-calendar.github.io/CalendGui
