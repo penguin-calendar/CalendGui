@@ -1,0 +1,53 @@
+/* ══════════════════════════════════════
+   BIENVENIDA
+══════════════════════════════════════ */
+.bienvenida {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding-top: 2rem;
+}
+
+.bienvenida-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: .35rem 1rem;
+  border-radius: 9999px;
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
+
+.bienvenida-badge--participante {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.bienvenida-badge--supervisor {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.bienvenida-badge--admin {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.bienvenida-badge--none {
+  background: var(--color-surface);
+  color: var(--color-text-subtle);
+}
+
+.bienvenida-titulo {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+
+.bienvenida-texto {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
