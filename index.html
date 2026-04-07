@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Redirigiendo a CalendGüi</title>
-    <script>
-      // Link de la última versión (hardcodeado por ahora)
-      const latestLink = "https://script.google.com/macros/s/AKfycbwnkV1IXwAIWJZ9crSotg-JV2Ht2TluaBYf1WC0UN1EQhNxbxt8wMQv_vZHv7k6mSNa/exec"; 
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CalendGüi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-      // Construir el link final con ?vista=participante
-      const finalLink = latestLink + "?vista=participante";
+  <!-- punto de montaje de la app -->
+  <div id="app"></div>
 
-      // Redirigir automáticamente al cargar la página
-      window.location.href = finalLink;
-    </script>
-  </head>
-  <body>
-    <p>Redirigiendo a CalendGüi... Si no funciona, haz <a id="fallback" href="#">click aquí</a>.</p>
-    <script>
-      // Actualizar link de fallback
-      document.getElementById('fallback').href = latestLink + "?vista=participante";
-    </script>
-  </body>
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>
