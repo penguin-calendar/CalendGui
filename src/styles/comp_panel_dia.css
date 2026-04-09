@@ -1,0 +1,274 @@
+/* ══════════════════════════════════════
+   PANEL DÍA
+══════════════════════════════════════ */
+
+.panel-dia {
+  margin-top: 1.25rem;
+  border-top: 1.5px solid var(--color-border);
+  padding-top: 1.125rem;
+
+  /* oculto por defecto — visibility permite animación a diferencia de display:none */
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(.5rem);
+  transition: opacity .2s ease, transform .2s ease, max-height .25s ease, visibility 0s linear .25s;
+}
+
+.panel-dia--open {
+  visibility: visible;
+  opacity: 1;
+  max-height: 2000px; /* suficientemente grande */
+  overflow: visible;
+  transform: translateY(0);
+  transition: opacity .2s ease, transform .2s ease, max-height .25s ease, visibility 0s linear 0s;
+}
+
+/* ── header ── */
+.panel-dia-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.panel-dia-titulo {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -.01em;
+}
+
+.panel-dia-close {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .15s, color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.panel-dia-close:hover {
+  background: var(--color-danger-bg);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+/* ── botón crear ── */
+.panel-dia-crear {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  padding: .875rem 1rem;
+  background: var(--color-bg);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius);
+  font-size: .9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.panel-dia-crear:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.panel-dia-crear-icon {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+  color: inherit;
+}
+
+/* ── lista ── */
+.panel-dia-lista {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.panel-dia-vacio {
+  font-size: .9375rem;
+  color: var(--color-text-subtle);
+  text-align: center;
+  padding: 1.25rem 0;
+}
+
+/* ── slot item ── */
+.panel-dia-slot {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  padding: .875rem 1rem;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  transition: border-color .15s, background .15s;
+}
+
+.panel-dia-slot--libre {
+  border-left: 3px solid var(--color-success);
+}
+
+.panel-dia-slot--reservado {
+  border-left: 3px solid var(--color-danger);
+  opacity: .85;
+}
+
+/* participante: slot es clickeable */
+.panel-dia-slot[style*="cursor: pointer"]:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+/* ── info del slot ── */
+.panel-dia-slot-info {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.panel-dia-slot-hora {
+  font-size: .9375rem;
+  font-weight: 700;
+  color: var(--color-text);
+  flex-shrink: 0;
+  min-width: 3rem;
+}
+
+.panel-dia-slot-est {
+  font-size: .875rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.panel-dia-slot-sup {
+  font-size: .875rem;
+  color: var(--color-text-subtle);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.panel-dia-slot-arrow {
+  font-size: 1.25rem;
+  color: var(--color-text-subtle);
+  flex-shrink: 0;
+}
+
+.panel-dia-slot-mail {
+  font-size: .8125rem;
+  color: var(--color-text-subtle);
+  width: 100%;
+  margin-top: .125rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── badges ── */
+.panel-dia-slot-badge {
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .2rem .625rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.panel-dia-slot-badge--libre {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.panel-dia-slot-badge--ocupado {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+/* ── acciones ── */
+.panel-dia-slot-actions {
+  display: flex;
+  gap: .375rem;
+  flex-shrink: 0;
+}
+
+.panel-dia-btn {
+  padding: .4rem .75rem;
+  border-radius: var(--radius-sm);
+  font-size: .8125rem;
+  font-weight: 500;
+  border: 1.5px solid var(--color-border);
+  background: none;
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.panel-dia-btn--edit {
+  color: var(--color-text-muted);
+}
+
+.panel-dia-btn--edit:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.panel-dia-btn--delete {
+  color: var(--color-text-subtle);
+}
+
+.panel-dia-btn--delete:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  background: var(--color-danger-bg);
+}
+
+/* ── slot supervisor expandido (mail debajo) ── */
+.panel-dia-slot--reservado .panel-dia-slot-info {
+  flex-wrap: wrap;
+}
+
+.panel-dia-crear-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .875rem;
+}
+
+
+
+.panel-dia-acciones {
+  display: flex;
+  gap: .5rem;
+  flex-shrink: 0;   /* ← no se achica */
+}
+
+/* ── desktop ── */
+@media (min-width: 1024px) {
+  .panel-dia-titulo  { font-size: .9375rem; }
+  .panel-dia-crear   { padding: .625rem .875rem; font-size: .875rem; }
+  .panel-dia-slot    { padding: .75rem .875rem; }
+  .panel-dia-slot-hora { font-size: .875rem; }
+  .panel-dia-slot-est,
+  .panel-dia-slot-sup { font-size: .8125rem; }
+  .panel-dia-slot-badge { font-size: .6875rem; }
+  .panel-dia-btn     { font-size: .75rem; padding: .3rem .625rem; }
+}

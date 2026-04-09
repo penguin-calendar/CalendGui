@@ -1,0 +1,174 @@
+/* ══════════════════════════════════════
+   CALENDARIO
+══════════════════════════════════════ */
+
+.cal-wrapper {
+  width: 100%;
+}
+
+/* ── navegación ── */
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  gap: .5rem;
+}
+
+.cal-nav-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-subtle);
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.cal-nav-btn:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cal-nav-label {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -.01em;
+  text-align: center;
+  flex: 1;
+}
+
+/* ── cabecera días ── */
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: .375rem;
+}
+
+.cal-weekday {
+  text-align: center;
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  padding-bottom: .5rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* ── grilla ── */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .25rem;
+}
+
+/* ── celda base ── */
+.cal-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  font-size: .9375rem;
+  user-select: none;
+  gap: .2rem;
+  transition: background .15s, transform .1s;
+}
+
+.cal-cell--empty {
+  pointer-events: none;
+}
+
+.cal-cell--pasado {
+  color: var(--color-text-subtle);
+  opacity: .4;
+}
+
+.cal-cell--normal {
+  color: var(--color-text-muted);
+}
+
+.cal-cell--hoy {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+
+
+/* celda con slots */
+.cal-cell--activo {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.cal-cell--activo::after {
+  display: none; /* ocultar el punto del "hoy" si tiene slots */
+}
+
+/* punto indicador del día de hoy (sin slots) */
+.cal-cell--hoy::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: red;  /* rojo para confirmar que se ve */
+}
+
+.cal-cell--activo:hover {
+  background: var(--color-primary-muted);
+  transform: scale(1.05);
+}
+
+.cal-cell--activo:active {
+  transform: scale(.97);
+}
+
+.cal-cell-num {
+  font-size: inherit;
+  line-height: 1;
+}
+
+/* ── dots de estado ── */
+.cal-cell-dots {
+  display: flex;
+  gap: .2rem;
+  align-items: center;
+}
+
+.cal-dot {
+  width: .3rem;
+  height: .3rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cal-dot--libre     { background: var(--color-success); }
+.cal-dot--reservado { background: var(--color-danger); }
+
+/* ── desktop ── */
+@media (min-width: 1024px) {
+  .cal-nav-btn   { width: 2.25rem; height: 2.25rem; font-size: 1.25rem; }
+  .cal-nav-label { font-size: .9375rem; }
+  .cal-weekday   { font-size: .6875rem; }
+  .cal-cell      { font-size: .875rem; }
+}

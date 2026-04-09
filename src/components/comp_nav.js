@@ -1,6 +1,7 @@
-import '../styles/nav.css'
-import { loginConGoogle, logout } from '../config/firebase.js'
-import { mostrarToast } from './toast.js'
+import '../styles/comp_nav.css'
+import { loginConGoogle, logout } from '../services/auth_service.js'
+import { getOCrearUsuario }       from '../services/users_service.js'
+import { mostrarToast } from './comp_toast.js'
 
 // ── Nav ────────────────────────────────────────────────────
 // uso: crearNav(usuario, { onLogin, onLogout, onMisReservas, onSupervisor })
@@ -93,6 +94,7 @@ export function crearNav(usuario, callbacks = {}) {
     cerrarMenu()
     const res = await loginConGoogle()
     if (res.ok) {
+      await getOCrearUsuario(res.firebaseUser)  // asegura que exista en Firestore
       if (onLogin) onLogin()
     } else {
       mostrarToast('Error al iniciar sesión', 'error')

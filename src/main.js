@@ -1,6 +1,7 @@
 import './styles/main.css'
-import { onAuthChange, getUsuarioActual } from './config/firebase.js'
-import { cargarVista } from './views/vista_participante.js'
+import { onAuthChange }     from './services/auth_service.js'
+import { getOCrearUsuario } from './services/users_service.js'
+import { cargarVista }      from './views/view_home.js'
 
 // ── estado global de la app ────────────────────────────────
 export const estado = {
@@ -10,18 +11,13 @@ export const estado = {
 // ── punto de entrada ───────────────────────────────────────
 const app = document.getElementById('app')
 
-// detecta cambios de sesión en tiempo real
+// detecta cambios de sesión en tiempo real (una sola vez)
 onAuthChange(async (firebaseUser) => {
-
   if (firebaseUser) {
-    // hay sesión activa → traer datos del usuario desde Firestore
-    const userData = await getUsuarioActual(firebaseUser.uid)
-    estado.usuario = userData
+    estado.usuario = await getOCrearUsuario(firebaseUser)
   } else {
-    // no hay sesión
     estado.usuario = null
   }
 
-  // siempre carga la vista participante como base
   cargarVista(app, estado)
 })
