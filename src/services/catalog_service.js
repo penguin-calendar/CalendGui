@@ -6,15 +6,15 @@ export async function obtenerChallenges() {
   return snap.docs.map(d => ({ id: d.id, ...d.data() }))
 }
 
-let _estaciones = []
+let _spots = []
 
-export async function obtenerEstaciones() {
-  if (_estaciones.length) return _estaciones  // cache simple
-  const snap = await getDocs(collection(db, 'estaciones'))
-  _estaciones = snap.docs.map(d => ({ id: d.id, ...d.data() }))
-  return _estaciones
+export async function obtenerSpots() {
+  if (_spots.length) return _spots
+  const snap = await getDocs(collection(db, 'spots'))
+  _spots = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+  return _spots
 }
 
-export function nombreEstacion(id) {
-  return _estaciones.find(e => e.id === id)?.nombre ?? id
+export function nombreSpot(id) {
+  return _spots.find(s => s.id === id)?.nombre ?? id
 }

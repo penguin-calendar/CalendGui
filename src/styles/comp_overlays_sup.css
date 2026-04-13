@@ -239,3 +239,51 @@ input[type=date].ovl-input {
     font-size: .9375rem;
   }
 }
+
+/* ── celda slot items ── */
+.ovl-celda-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .75rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: .5rem;
+}
+
+.ovl-celda-slot-info {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ovl-celda-slot-est {
+  font-size: .9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.ovl-celda-slot-actions {
+  display: flex;
+  gap: .375rem;
+  flex-shrink: 0;
+}
+
+.ovl-celda-badge {
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .2rem .625rem;
+  border-radius: 9999px;
+}
+
+.ovl-celda-badge--libre    { background: var(--color-success-bg); color: var(--color-success); }
+.ovl-celda-badge--ocupado  { background: var(--color-danger-bg);  color: var(--color-danger);  }
+
+.ovl-btn--sm {
+  min-height: 2rem;
+  padding: .3rem .75rem;
+  font-size: .8125rem;
+}

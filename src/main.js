@@ -1,23 +1,16 @@
 import './styles/main.css'
 import { onAuthChange }     from './services/auth_service.js'
 import { getOCrearUsuario } from './services/users_service.js'
-import { cargarVista }      from './views/view_home.js'
+import { enrutar }          from './router.js'
 
-// ── estado global de la app ────────────────────────────────
-export const estado = {
-  usuario: null   // null = no logueado, objeto = usuario logueado
-}
+export const estado = { usuario: null }
 
-// ── punto de entrada ───────────────────────────────────────
 const app = document.getElementById('app')
 
-// detecta cambios de sesión en tiempo real (una sola vez)
 onAuthChange(async (firebaseUser) => {
-  if (firebaseUser) {
-    estado.usuario = await getOCrearUsuario(firebaseUser)
-  } else {
-    estado.usuario = null
-  }
+  estado.usuario = firebaseUser
+    ? await getOCrearUsuario(firebaseUser)
+    : null
 
-  cargarVista(app, estado)
+  enrutar(app, estado)
 })

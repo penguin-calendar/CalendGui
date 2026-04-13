@@ -1,0 +1,37 @@
+.filtros-sup {
+  padding: 1rem;
+  border-right: 1.5px solid var(--color-border);
+  min-width: 180px;
+}
+
+.filtros-sup-titulo {
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--color-text-subtle);
+  margin-bottom: .75rem;
+}
+
+.filtros-sup-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .4rem 0;
+  font-size: .9375rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.filtros-sup-dot {
+  width: .625rem;
+  height: .625rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.filtros-sup-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: .5rem 0;
+}
